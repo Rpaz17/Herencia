@@ -41,13 +41,11 @@ public class pagoPlan extends javax.swing.JFrame {
         numero.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Ingresar Numero de Celular:");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Pago Mensual:");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -59,15 +57,24 @@ public class pagoPlan extends javax.swing.JFrame {
 
         no.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         no.setText("NO");
+        no.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                noMouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("¿Desea pagar?");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         si.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         si.setText("SI");
+        si.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                siActionPerformed(evt);
+            }
+        });
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/herencia_progralab2/imagenes/pago_amigo_plan.png"))); // NOI18N
 
@@ -125,6 +132,18 @@ public class pagoPlan extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void siActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siActionPerformed
+        menu rega=new menu();
+        rega.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_siActionPerformed
+
+    private void noMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noMouseClicked
+        menu rega=new menu();
+        rega.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_noMouseClicked
 
     /**
      * @param args the command line arguments
