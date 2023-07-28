@@ -35,14 +35,29 @@ public class menu extends javax.swing.JFrame {
         agregarPlan.setFont(new java.awt.Font("Segoe UI Semilight", 0, 36)); // NOI18N
         agregarPlan.setText("AGREGAR PLAN");
         agregarPlan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        agregarPlan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                agregarPlanMouseClicked(evt);
+            }
+        });
 
         pago.setFont(new java.awt.Font("Segoe UI Semilight", 0, 36)); // NOI18N
         pago.setText("PAGO DE PLAN");
         pago.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        pago.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pagoMouseClicked(evt);
+            }
+        });
 
         agregarAmigo.setFont(new java.awt.Font("Segoe UI Semilight", 0, 36)); // NOI18N
         agregarAmigo.setText("AGREGAR AMIGO");
         agregarAmigo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        agregarAmigo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                agregarAmigoMouseClicked(evt);
+            }
+        });
 
         salir.setFont(new java.awt.Font("Segoe UI Semilight", 0, 36)); // NOI18N
         salir.setText("SALIR");
@@ -56,6 +71,11 @@ public class menu extends javax.swing.JFrame {
         listar.setFont(new java.awt.Font("Segoe UI Semilight", 0, 36)); // NOI18N
         listar.setText("LISTAR");
         listar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        listar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listarMouseClicked(evt);
+            }
+        });
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/herencia_progralab2/imagenes/menu.png"))); // NOI18N
 
@@ -100,6 +120,30 @@ public class menu extends javax.swing.JFrame {
     private void salirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseClicked
         System.exit(0);
     }//GEN-LAST:event_salirMouseClicked
+
+    private void agregarAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarAmigoMouseClicked
+        amigo add= new amigo();
+        add.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_agregarAmigoMouseClicked
+
+    private void agregarPlanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarPlanMouseClicked
+        agregarPlan addPlan =  new agregarPlan();
+        addPlan.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_agregarPlanMouseClicked
+
+    private void pagoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagoMouseClicked
+       pagoPlan addPago = new pagoPlan();
+       addPago.setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_pagoMouseClicked
+
+    private void listarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarMouseClicked
+        listar addLista = new listar();
+        addLista.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_listarMouseClicked
 
     /**
      * @param args the command line arguments
