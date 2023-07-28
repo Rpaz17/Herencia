@@ -16,6 +16,7 @@ public class PlanIPhone extends Plan {
        return (22+costoMinutos+costoMensajes);
     }
     
+     @Override
     void imprimir(){
         super.imprimir();
         System.out.println(email);
