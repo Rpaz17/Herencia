@@ -8,9 +8,13 @@ package herencia_progralab2;
 public class listar extends javax.swing.JFrame {
     private Tigo tigo;
  
-    public listar() {
+    public listar(Tigo tigo) {
         initComponents();
         this.tigo = tigo;
+        String listado = tigo.lista();
+        outputArea.setText(listado);
+        outputArea.setEditable(false);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
  
@@ -20,7 +24,7 @@ public class listar extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        todo = new javax.swing.JTextArea();
+        outputArea = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
@@ -32,9 +36,9 @@ public class listar extends javax.swing.JFrame {
         jLabel2.setText("Planes agregados:");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        todo.setColumns(20);
-        todo.setRows(5);
-        jScrollPane3.setViewportView(todo);
+        outputArea.setColumns(20);
+        outputArea.setRows(5);
+        jScrollPane3.setViewportView(outputArea);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jButton1.setText("REGRESAR");
@@ -91,43 +95,12 @@ public class listar extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(listar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(listar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(listar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(listar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new listar().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fondo;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea todo;
+    private javax.swing.JTextArea outputArea;
     // End of variables declaration//GEN-END:variables
 }
