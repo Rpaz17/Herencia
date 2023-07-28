@@ -7,7 +7,7 @@ package herencia_progralab2;
 
 public class amigo extends javax.swing.JFrame {
 
-
+    private Tigo tigo;
     public amigo() {
         initComponents();
     }
@@ -106,6 +106,10 @@ public class amigo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarMouseClicked
+        int num=Integer.parseInt(numero.getText());
+        String p=pin.getText();
+        tigo.agregarAmigo(num, p);
+        
         menu rega=new menu();
         rega.setVisible(true);
         this.setVisible(false);
