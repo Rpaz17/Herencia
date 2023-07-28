@@ -127,6 +127,9 @@
           <Font name="Segoe UI" size="30" style="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nombreActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="email">
       <Properties>
@@ -134,6 +137,9 @@
           <Font name="Segoe UI" size="30" style="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="fondo">
       <Properties>

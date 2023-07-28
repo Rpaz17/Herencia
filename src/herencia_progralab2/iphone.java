@@ -12,6 +12,7 @@ public class iphone extends javax.swing.JFrame {
 
     public iphone() {
         initComponents();
+            tigo.agregarPlan(Integer.parseInt(numero.getText()), nombre.getText(), email.getText(), "IPHONE");
     }
 
 
@@ -48,8 +49,18 @@ public class iphone extends javax.swing.JFrame {
         numero.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
 
         nombre.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreActionPerformed(evt);
+            }
+        });
 
         email.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailActionPerformed(evt);
+            }
+        });
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/herencia_progralab2/imagenes/listar.png"))); // NOI18N
         fondo.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -132,10 +143,15 @@ public class iphone extends javax.swing.JFrame {
 
     private void fondoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_fondoAncestorAdded
                int num= Integer.parseInt(numero.getText());
-             String name = nombre.getText();
-             String mail = email.getText();
-            tigo.agregarPlan(num, name, mail, "IPHONE");
     }//GEN-LAST:event_fondoAncestorAdded
+
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+         String name = nombre.getText();
+    }//GEN-LAST:event_nombreActionPerformed
+
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
+          String mail = email.getText();
+    }//GEN-LAST:event_emailActionPerformed
 
     /**
      * @param args the command line arguments

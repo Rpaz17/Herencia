@@ -11,6 +11,7 @@ private Tigo tigo;
 
     public samsung() {
         initComponents();
+        tigo.agregarPlan(Integer.parseInt(numero.getText()), nombre.getText(), pin.getText(), "SAMSUNG");
     }
 
 
@@ -35,6 +36,11 @@ private Tigo tigo;
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         numero.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        numero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numeroActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -42,6 +48,11 @@ private Tigo tigo;
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         nombre.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -49,6 +60,11 @@ private Tigo tigo;
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         pin.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        pin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pinActionPerformed(evt);
+            }
+        });
 
         crear.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         crear.setText("Crear Plan");
@@ -117,7 +133,21 @@ private Tigo tigo;
         menu rega=new menu();
         rega.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_crearMouseClicked
+
+    private void numeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroActionPerformed
+       int num = Integer.parseInt(numero.getText());
+       
+    }//GEN-LAST:event_numeroActionPerformed
+
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+        String name = nombre.getText();
+    }//GEN-LAST:event_nombreActionPerformed
+
+    private void pinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pinActionPerformed
+        int pn = Integer.parseInt(pin.getText());
+    }//GEN-LAST:event_pinActionPerformed
 
     /**
      * @param args the command line arguments
