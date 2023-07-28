@@ -57,6 +57,8 @@ public class menu extends javax.swing.JFrame {
         listar.setText("LISTAR");
         listar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/herencia_progralab2/imagenes/menu.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -67,9 +69,8 @@ public class menu extends javax.swing.JFrame {
                     .addComponent(salir)
                     .addComponent(agregarAmigo)
                     .addComponent(listar)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(pago)
-                        .addComponent(agregarPlan)))
+                    .addComponent(pago)
+                    .addComponent(agregarPlan))
                 .addGap(0, 928, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

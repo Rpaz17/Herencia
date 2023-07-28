@@ -29,10 +29,8 @@
                   <Component id="salir" min="-2" max="-2" attributes="0"/>
                   <Component id="agregarAmigo" min="-2" max="-2" attributes="0"/>
                   <Component id="listar" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="pago" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="agregarPlan" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="pago" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="agregarPlan" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="928" max="32767" attributes="0"/>
           </Group>
@@ -112,6 +110,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="fondo">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/herencia_progralab2/imagenes/menu.png"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
