@@ -69,7 +69,7 @@ public class agregarPlan extends javax.swing.JFrame {
                         .addComponent(menu)))
                 .addGap(415, 415, 415))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(fondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1281, Short.MAX_VALUE))
+                .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 1281, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -41,7 +41,7 @@
               <EmptySpace min="-2" pref="415" max="-2" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Component id="fondo" alignment="1" pref="1281" max="32767" attributes="0"/>
+              <Component id="fondo" alignment="0" pref="1281" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
