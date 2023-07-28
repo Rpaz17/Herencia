@@ -4,6 +4,8 @@
  */
 package herencia_progralab2;
 
+import javax.swing.JOptionPane;
+
 
 public class pagoPlan extends javax.swing.JFrame {
     private Tigo tigo;
@@ -20,8 +22,6 @@ public class pagoPlan extends javax.swing.JFrame {
         numero = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        pago = new javax.swing.JTextArea();
         no = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         si = new javax.swing.JButton();
@@ -44,11 +44,6 @@ public class pagoPlan extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Pago Mensual:");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        pago.setColumns(20);
-        pago.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
-        pago.setRows(5);
-        jScrollPane1.setViewportView(pago);
 
         no.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         no.setText("VOLVER");
@@ -98,9 +93,7 @@ public class pagoPlan extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 436, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(min)
@@ -132,13 +125,12 @@ public class pagoPlan extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(44, 44, 44)
+                                .addGap(99, 99, 99)
                                 .addComponent(jLabel3))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
+                                .addGap(65, 65, 65)
                                 .addComponent(min, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -167,8 +159,7 @@ public class pagoPlan extends javax.swing.JFrame {
         int num=Integer.parseInt(numero.getText());
         int minutos=Integer.parseInt(min.getText());
         int mensaje=Integer.parseInt(sms.getText());
-      //  String texto=tigo.pagoPlan(num, minutos, mensaje);
-    //    pago.setText(texto);
+        JOptionPane.showMessageDialog(this, tigo.pagoPlan(num, minutos, num));
        
     }//GEN-LAST:event_siActionPerformed
 
@@ -220,11 +211,9 @@ public class pagoPlan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField min;
     private javax.swing.JButton no;
     private javax.swing.JTextField numero;
-    private javax.swing.JTextArea pago;
     private javax.swing.JButton si;
     private javax.swing.JTextField sms;
     // End of variables declaration//GEN-END:variables
