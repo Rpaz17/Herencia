@@ -6,7 +6,8 @@ package herencia_progralab2;
 
 
 public class samsung extends javax.swing.JFrame {
-
+private PlanSamsung samsung;
+private Tigo tigo;
 
     public samsung() {
         initComponents();
