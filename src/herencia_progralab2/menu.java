@@ -17,7 +17,7 @@ public class menu extends javax.swing.JFrame {
         initComponents();
 
     }
-
+    Tigo tigo = new Tigo();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -140,9 +140,8 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_pagoMouseClicked
 
     private void listarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarMouseClicked
-        listar addLista = new listar();
-        addLista.setVisible(true);
-        this.setVisible(false);
+        listar listado = new listar(tigo);
+        listado.setVisible(true);
     }//GEN-LAST:event_listarMouseClicked
 
     /**
