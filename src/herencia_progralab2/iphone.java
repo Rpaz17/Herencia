@@ -12,9 +12,9 @@ public class iphone extends javax.swing.JFrame {
 
     public iphone() {
         initComponents();
-            tigo.agregarPlan(Integer.parseInt(numero.getText()), nombre.getText(), email.getText(), "IPHONE");
+           
     }
-
+    Tigo tg = new Tigo();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -139,10 +139,12 @@ public class iphone extends javax.swing.JFrame {
         menu rega=new menu();
         rega.setVisible(true);
         this.setVisible(false);
+         tigo.agregarPlan(Integer.parseInt(numero.getText()), nombre.getText(), email.getText(), "IPHONE");
     }//GEN-LAST:event_crearMouseClicked
 
     private void fondoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_fondoAncestorAdded
                int num= Integer.parseInt(numero.getText());
+               
     }//GEN-LAST:event_fondoAncestorAdded
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed

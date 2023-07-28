@@ -9,14 +9,15 @@ package herencia_progralab2;
  * @author pcast
  */
 public class agregarPlan extends javax.swing.JFrame {
-
+private Tigo tigo;
     /**
      * Creates new form agregarPlan
      */
     public agregarPlan() {
         initComponents();
+        
     }
-
+    Tigo tg= new Tigo();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -111,14 +112,14 @@ public class agregarPlan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void samMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_samMouseClicked
-        samsung rega=new samsung();
-        rega.setVisible(true);
+        samsung sam=new samsung();
+        sam.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_samMouseClicked
 
     private void iphoneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iphoneMouseClicked
-        iphone rega=new iphone();
-        rega.setVisible(true);
+        iphone ip=new iphone();
+        ip.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_iphoneMouseClicked
 

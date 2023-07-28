@@ -5,6 +5,7 @@
 package herencia_progralab2;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -140,8 +141,7 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_pagoMouseClicked
 
     private void listarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarMouseClicked
-        listar listado = new listar(tigo);
-        listado.setVisible(true);
+        JOptionPane.showMessageDialog(this, tigo.lista(), "LISTA", HEIGHT);
     }//GEN-LAST:event_listarMouseClicked
 
     /**

@@ -11,9 +11,8 @@ private Tigo tigo;
 
     public samsung() {
         initComponents();
-        tigo.agregarPlan(Integer.parseInt(numero.getText()), nombre.getText(), pin.getText(), "SAMSUNG");
-    }
-
+          }
+Tigo tg = new Tigo();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -133,7 +132,7 @@ private Tigo tigo;
         menu rega=new menu();
         rega.setVisible(true);
         this.setVisible(false);
-        
+        tigo.agregarPlan(Integer.parseInt(numero.getText()), nombre.getText(), pin.getText(), "SAMSUNG");  
     }//GEN-LAST:event_crearMouseClicked
 
     private void numeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroActionPerformed
