@@ -89,5 +89,7 @@ public class Tigo {
         }
         System.out.println("Total de planeas Samsung: "+countSamsung);
         System.out.println("Total de planes IPhone: "+countIPhone);
+ 
     }
+
 }
