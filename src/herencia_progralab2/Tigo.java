@@ -72,7 +72,7 @@ public class Tigo {
         System.out.println("El numero de telefono no existe o el plan no es de tipo SAMSUNG.");
     }
 
-    public void lista() {
+    public String lista() {
         int countSamsung=0;
         int countIPhone=0;
         
@@ -87,8 +87,7 @@ public class Tigo {
                 countIPhone++;
             }
         }
-        System.out.println("Total de planeas Samsung: "+countSamsung);
-        System.out.println("Total de planes IPhone: "+countIPhone);
+        return "Total de planes Samsung: "+countSamsung+"\nTotal de planes IPhone: "+countIPhone;
  
     }
 
