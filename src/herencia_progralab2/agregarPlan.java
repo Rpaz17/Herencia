@@ -35,6 +35,7 @@ public class agregarPlan extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ELIJA SU TIPO DE PLAN");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -47,6 +48,8 @@ public class agregarPlan extends javax.swing.JFrame {
 
         menu.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         menu.setText("Regresar");
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/herencia_progralab2/imagenes/pago_amigo_plan.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
