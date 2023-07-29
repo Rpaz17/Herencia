@@ -9,9 +9,12 @@ import javax.swing.JOptionPane;
 
 public class pagoPlan extends javax.swing.JFrame {
     private Tigo tigo;
+    private boolean planPaid = false;
 
-    public pagoPlan() {
+    public pagoPlan(Tigo tigo) {
         initComponents();
+        this.tigo = tigo;
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
 
@@ -30,6 +33,7 @@ public class pagoPlan extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         sms = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +54,11 @@ public class pagoPlan extends javax.swing.JFrame {
         no.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 noMouseClicked(evt);
+            }
+        });
+        no.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noActionPerformed(evt);
             }
         });
 
@@ -76,7 +85,8 @@ public class pagoPlan extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Ingrese minutos:");
 
-        sms.setText("jTextField1");
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel7.setText("Pago");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,18 +102,23 @@ public class pagoPlan extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(94, 94, 94)
+                        .addComponent(si, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(197, 197, 197)
+                        .addComponent(no, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(208, 208, 208)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 436, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(min)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sms, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(si, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(197, 197, 197)
-                        .addComponent(no, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(sms, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))))
                 .addGap(34, 34, 34))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -122,7 +137,6 @@ public class pagoPlan extends javax.swing.JFrame {
                 .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,7 +153,9 @@ public class pagoPlan extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(36, 36, 36)
                                 .addComponent(no))))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(sms, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(149, 149, 149))
@@ -153,14 +169,49 @@ public class pagoPlan extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void siActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siActionPerformed
-        int num=Integer.parseInt(numero.getText());
-        int minutos=Integer.parseInt(min.getText());
-        int mensaje=Integer.parseInt(sms.getText());
-        JOptionPane.showMessageDialog(this, tigo.pagoPlan(num, minutos, num));
-       
+        String numStr = numero.getText();
+        String minStr = min.getText();
+        String smsStr = sms.getText();
+
+        if (numStr.isEmpty() || minStr.isEmpty() || smsStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.",
+                "Campos vacíos", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        int num;
+        int minutos;
+        int mensajes;
+
+        try {
+            num = Integer.parseInt(numStr);
+            minutos = Integer.parseInt(minStr);
+            mensajes = Integer.parseInt(smsStr);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Los campos deben contener valores numéricos válidos.",
+                "Formato incorrecto", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (planPaid) {
+            JOptionPane.showMessageDialog(this, "El plan ya ha sido pagado anteriormente.");
+        } else {
+            if (tigo.busqueda(num, "", "")) {
+                double paymentAmount = tigo.pagoPlan(num, minutos, mensajes);
+
+                jLabel7.setText("Pago: $" + paymentAmount);
+
+                planPaid = true;
+
+                JOptionPane.showMessageDialog(this, "Plan pagado con éxito.");
+            } else {
+                JOptionPane.showMessageDialog(this, "El número de teléfono no existe.");
+            }
+        }
     }//GEN-LAST:event_siActionPerformed
 
     private void noMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noMouseClicked
@@ -169,40 +220,20 @@ public class pagoPlan extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_noMouseClicked
 
+    private void noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noActionPerformed
+        // TODO add your handling code here:
+        if (planPaid) {
+            this.dispose();
+        } else {
+            menu rega = new menu();
+            rega.setVisible(true);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_noActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(pagoPlan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(pagoPlan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(pagoPlan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(pagoPlan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new pagoPlan().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -211,6 +242,7 @@ public class pagoPlan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField min;
     private javax.swing.JButton no;
     private javax.swing.JTextField numero;

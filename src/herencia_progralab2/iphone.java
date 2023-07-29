@@ -4,18 +4,16 @@
  */
 package herencia_progralab2;
 
+import javax.swing.JOptionPane;
 
 public class iphone extends javax.swing.JFrame {
-        private PlanIPhone iphone;
-        private Tigo tigo;
+    private Tigo tigo;
 
-
-    public iphone() {
+    public iphone(Tigo tigo) {
         initComponents();
-           
+        this.tigo=tigo;
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
-    Tigo tg = new Tigo();
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -80,6 +78,11 @@ public class iphone extends javax.swing.JFrame {
                 crearMouseClicked(evt);
             }
         });
+        crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,66 +132,62 @@ public class iphone extends javax.swing.JFrame {
                 .addComponent(crear)
                 .addGap(46, 46, 46))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(fondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE))
+                .addComponent(fondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearMouseClicked
-        menu rega=new menu();
+        /*menu rega=new menu();
         rega.setVisible(true);
         this.setVisible(false);
-         tigo.agregarPlan(Integer.parseInt(numero.getText()), nombre.getText(), email.getText(), "IPHONE");
+        tigo.agregarPlan(Integer.parseInt(numero.getText()), nombre.getText(), email.getText(), "IPHONE");*/
     }//GEN-LAST:event_crearMouseClicked
 
     private void fondoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_fondoAncestorAdded
-               int num= Integer.parseInt(numero.getText());
-               
+
     }//GEN-LAST:event_fondoAncestorAdded
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
-         String name = nombre.getText();
+
     }//GEN-LAST:event_nombreActionPerformed
 
     private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
-          String mail = email.getText();
+
     }//GEN-LAST:event_emailActionPerformed
+
+    private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
+        // TODO add your handling code here:
+        String numeroStr = numero.getText().trim();
+        String nombreCliente = nombre.getText().trim();
+        String emailIPhone = email.getText().trim();
+
+        if (numeroStr.isEmpty() || !numeroStr.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "Debes ingresar un número de teléfono válido.");
+        } else if (nombreCliente.isEmpty() || emailIPhone.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debes completar todos los campos.");
+        } else {
+            try {
+                int numeroTel = Integer.parseInt(numeroStr);
+
+                if (tigo.busqueda(numeroTel, emailIPhone, "IPHONE")) {
+                    JOptionPane.showMessageDialog(null, "¡Ya existe un plan para este teléfono!");
+                } else {
+                    tigo.agregarPlan(numeroTel, nombreCliente, emailIPhone, "IPHONE");
+                    JOptionPane.showMessageDialog(null, "¡Plan iPhone agregado con éxito!");
+                    this.dispose();
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "El número de teléfono debe ser un valor numérico válido.");
+            }
+        }
+    }//GEN-LAST:event_crearActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(iphone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(iphone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(iphone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(iphone.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new iphone().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton crear;

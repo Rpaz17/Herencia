@@ -19,7 +19,7 @@ public class Tigo {
 
     public void agregarPlan(int numeroTel, String nombre, String extra, String tipo) {
         if (busqueda(numeroTel, extra, tipo)) {
-            System.out.println("El numero de telefono ya existe. Dato ya registrado.");
+            System.out.println("Plan ya creado.");
             return;
         }
         if (tipo.equals("IPHONE")) {
@@ -50,7 +50,7 @@ public class Tigo {
         }
         return false;
     }
-    
+
     public double pagoPlan(int numeroTel, int mins, int msgs) {
         for (Plan plan : planes) {
             if (plan.getNumeroTelefono() == numeroTel) {
@@ -62,33 +62,70 @@ public class Tigo {
     }
 
     public void agregarAmigo(int numeroTel, String pin) {
-        for (Plan plan : planes) {
-            if (plan.getNumeroTelefono() == numeroTel && plan instanceof PlanSamsung) {
-                PlanSamsung planSamsung = (PlanSamsung) plan;
-                planSamsung.agregarPinAmigo(pin);
-                return;
-            }
-        }
-        System.out.println("El numero de telefono no existe o el plan no es de tipo SAMSUNG.");
-    }
+       boolean numeroExiste = false;
+       for (Plan plan : planes) {
+           if (plan.getNumeroTelefono() == numeroTel) {
+               numeroExiste = true;
+               if (plan instanceof PlanSamsung) {
+                   PlanSamsung planSamsung = (PlanSamsung) plan;
+                   if (planSamsung.getPin().equals(pin)) {
+                       planSamsung.agregarPinAmigo(pin);
+                       System.out.println("Amigo agregado al BBM del plan Samsung.");
+                       return;
+                   } else {
+                       System.out.println("El PIN ingresado no coincide con el registrado para este número.");
+                       return;
+                   }
+               } else {
+                   System.out.println("El plan asociado al número de teléfono no es de tipo SAMSUNG.");
+                   return;
+               }
+           }
+       }
+       if (!numeroExiste) {
+           System.out.println("El número de teléfono no existe.");
+       }
+   }
 
     public String lista() {
-        int countSamsung=0;
-        int countIPhone=0;
-        
+        int countSamsung = 0;
+        int countIPhone = 0;
+        String result = "";
+
         for (Plan plan : planes) {
-            plan.imprimir();
-            System.out.println("Pago Mensual: $" + plan.pagoMensual(100, 50));
-            System.out.println();
+            result += "Número de teléfono: " + plan.getNumeroTelefono() + "\n";
+            result += "Nombre del cliente: " + plan.getNombreCliente() + "\n";
 
             if (plan instanceof PlanSamsung) {
+                PlanSamsung planSamsung = (PlanSamsung) plan;
+                result += "Tipo de plan: SAMSUNG" + "\n";
+                result += "PIN: " + planSamsung.getPin() + "\n";
+
+                // Display names and PINs of friends in BBM list
+                ArrayList<String> bbm = planSamsung.getAmigosBBM();
+                if (!bbm.isEmpty()) {
+                    result += "\nAmigos en BBM:\n";
+                    for (String amigo : bbm) {
+                        result += amigo + "\n";
+                    }
+                }
+
+                result += "Pago Mensual: $" + planSamsung.pagoMensual(0, 0) + "\n";
+                result += "\n";
                 countSamsung++;
             } else if (plan instanceof PlanIPhone) {
+                PlanIPhone planIPhone = (PlanIPhone) plan;
+                result += "Tipo de plan: IPHONE" + "\n";
+                result += "Email: " + planIPhone.getEmail() + "\n";
+                result += "Pago Mensual: $" + planIPhone.pagoMensual(0, 0) + "\n";
+                result += "\n";
                 countIPhone++;
             }
         }
-        return "Total de planes Samsung: "+countSamsung+"\nTotal de planes IPhone: "+countIPhone;
- 
-    }
 
+        result += "Total de planes Samsung: " + countSamsung + "\n";
+        result += "Total de planes IPhone: " + countIPhone;
+
+        return result;
+    }
 }

@@ -1,9 +1,8 @@
 package herencia_progralab2;
 
-import java.util.ArrayList;
-
 public class PlanIPhone extends Plan {
-     private String email;
+    private String email;
+    
     public PlanIPhone(int numeroTelefono, String nombreCliente, String email){
         super(numeroTelefono, nombreCliente);
         this.email=email;

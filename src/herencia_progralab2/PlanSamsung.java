@@ -42,4 +42,8 @@ class PlanSamsung extends Plan {
     String getPin(){
         return pin;
     }
+    
+    ArrayList<String> getAmigosBBM() {
+        return bbm;
+    }
 }

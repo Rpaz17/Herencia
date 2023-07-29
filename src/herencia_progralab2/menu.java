@@ -13,10 +13,8 @@ import javax.swing.JOptionPane;
  */
 public class menu extends javax.swing.JFrame {
 
-
     public menu() {
         initComponents();
-
     }
     Tigo tigo = new Tigo();
 
@@ -123,25 +121,25 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_salirMouseClicked
 
     private void agregarAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarAmigoMouseClicked
-        amigo add= new amigo();
+        amigo add= new amigo(tigo);
         add.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_agregarAmigoMouseClicked
 
     private void agregarPlanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarPlanMouseClicked
-        agregarPlan addPlan =  new agregarPlan();
+        agregarPlan addPlan =  new agregarPlan(tigo);
         addPlan.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_agregarPlanMouseClicked
 
     private void pagoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pagoMouseClicked
-       pagoPlan addPago = new pagoPlan();
-       addPago.setVisible(true);
-       this.setVisible(false);
+        pagoPlan addPago = new pagoPlan(tigo);
+        addPago.setVisible(true);
     }//GEN-LAST:event_pagoMouseClicked
 
     private void listarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarMouseClicked
-        JOptionPane.showMessageDialog(this, tigo.lista(), "LISTA", HEIGHT);
+        //JOptionPane.showMessageDialog(this, tigo.lista(), "LISTA", HEIGHT);
+        tigo.lista();
+        listar listado = new listar(tigo);
+        listado.setVisible(true);
     }//GEN-LAST:event_listarMouseClicked
 
     /**

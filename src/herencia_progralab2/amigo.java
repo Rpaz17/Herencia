@@ -4,12 +4,16 @@
  */
 package herencia_progralab2;
 
+import javax.swing.JOptionPane;
+
 
 public class amigo extends javax.swing.JFrame {
 
     private Tigo tigo;
-    public amigo() {
+    public amigo(Tigo tigo) {
         initComponents();
+        this.tigo=tigo;
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")
@@ -103,16 +107,43 @@ public class amigo extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarMouseClicked
-        int num=Integer.parseInt(numero.getText());
-        String p=pin.getText();
-        tigo.agregarAmigo(num, p);
-        
-        menu rega=new menu();
-        rega.setVisible(true);
-        this.setVisible(false);
+        try {
+            String numStr = numero.getText();
+            String p = pin.getText();
+
+            if (numStr.isEmpty() || p.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.",
+                    "Campos vacíos", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            int num;
+
+            try {
+                num = Integer.parseInt(numStr);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "El número de teléfono debe ser un valor numérico válido.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            boolean existsAndSamsung = tigo.busqueda(num, "", "SAMSUNG");
+            if (!existsAndSamsung) {
+                JOptionPane.showMessageDialog(this, "El número de teléfono no existe o no es de un plan Samsung.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            tigo.agregarAmigo(num, p);
+            JOptionPane.showMessageDialog(this, "Amigo agregado con éxito al BBM del plan Samsung.");
+            this.dispose();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_agregarMouseClicked
 
     private void menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuMouseClicked
@@ -124,37 +155,6 @@ public class amigo extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(amigo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(amigo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(amigo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(amigo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new amigo().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregar;

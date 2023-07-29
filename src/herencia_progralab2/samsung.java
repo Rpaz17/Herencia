@@ -4,16 +4,18 @@
  */
 package herencia_progralab2;
 
+import javax.swing.JOptionPane;
+
 
 public class samsung extends javax.swing.JFrame {
-private PlanSamsung samsung;
-private Tigo tigo;
+    private Tigo tigo;
 
-    public samsung() {
+    public samsung(Tigo tigo) {
         initComponents();
-          }
-Tigo tg = new Tigo();
-
+        this.tigo=tigo;
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -72,6 +74,11 @@ Tigo tg = new Tigo();
                 crearMouseClicked(evt);
             }
         });
+        crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearActionPerformed(evt);
+            }
+        });
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/herencia_progralab2/imagenes/pago_amigo_plan.png"))); // NOI18N
 
@@ -126,62 +133,56 @@ Tigo tg = new Tigo();
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearMouseClicked
-        menu rega=new menu();
+        /*menu rega=new menu();
         rega.setVisible(true);
         this.setVisible(false);
-        tigo.agregarPlan(Integer.parseInt(numero.getText()), nombre.getText(), pin.getText(), "SAMSUNG");  
+        tigo.agregarPlan(Integer.parseInt(numero.getText()), nombre.getText(), pin.getText(), "SAMSUNG");*/
     }//GEN-LAST:event_crearMouseClicked
 
     private void numeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroActionPerformed
-       int num = Integer.parseInt(numero.getText());
        
     }//GEN-LAST:event_numeroActionPerformed
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
-        String name = nombre.getText();
     }//GEN-LAST:event_nombreActionPerformed
 
     private void pinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pinActionPerformed
-        int pn = Integer.parseInt(pin.getText());
     }//GEN-LAST:event_pinActionPerformed
+
+    private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
+        // TODO add your handling code here:
+        String numeroStr = numero.getText().trim();
+        String nombreCliente = nombre.getText().trim();
+        String pinSamsung = pin.getText().trim();
+
+        if (numeroStr.isEmpty() || !numeroStr.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "Debes ingresar un número de teléfono válido.");
+        } else if (nombreCliente.isEmpty() || pinSamsung.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debes completar todos los campos.");
+        } else {
+            try {
+                int numeroTel = Integer.parseInt(numeroStr);
+
+                if (tigo.busqueda(numeroTel, pinSamsung, "SAMSUNG")) {
+                    JOptionPane.showMessageDialog(null, "¡Ya existe un plan para este teléfono!");
+                } else {
+                    tigo.agregarPlan(numeroTel, nombreCliente, pinSamsung, "SAMSUNG");
+                    JOptionPane.showMessageDialog(null, "¡Plan Samsung agregado con éxito!");
+                    this.dispose();        
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "El número de teléfono debe ser un valor numérico válido.");
+            }
+        }
+    }//GEN-LAST:event_crearActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(samsung.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(samsung.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(samsung.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(samsung.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new samsung().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton crear;
