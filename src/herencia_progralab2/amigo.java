@@ -147,7 +147,7 @@ public class amigo extends javax.swing.JFrame {
     }//GEN-LAST:event_agregarMouseClicked
 
     private void menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuMouseClicked
-        menu rega=new menu();
+        menu rega=new menu(tigo);
         rega.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_menuMouseClicked

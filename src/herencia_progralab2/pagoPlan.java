@@ -215,7 +215,7 @@ public class pagoPlan extends javax.swing.JFrame {
     }//GEN-LAST:event_siActionPerformed
 
     private void noMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noMouseClicked
-        menu rega=new menu();
+        menu rega=new menu(tigo);
         rega.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_noMouseClicked
@@ -225,7 +225,7 @@ public class pagoPlan extends javax.swing.JFrame {
         if (planPaid) {
             this.dispose();
         } else {
-            menu rega = new menu();
+            menu rega = new menu(tigo);
             rega.setVisible(true);
             this.setVisible(false);
         }
